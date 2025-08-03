@@ -1,4 +1,4 @@
-# 🚕 Ride Booking System API
+#  Ride Booking System API
 
 A secure, scalable, role-based backend API for a ride booking platform (like Uber or Pathao)
 
@@ -62,7 +62,7 @@ This system allows:
 
 ## API Endpoints
 
-### 🔐 Authentication
+###  Authentication
 
 | Method | Endpoint                 | Description               |
 |--------|--------------------------|---------------------------|
@@ -71,7 +71,7 @@ This system allows:
 
 ---
 
-### 👤 User (Admin)
+###  User (Admin)
 
 | Method | Endpoint                      | Description                |
 |--------|-------------------------------|----------------------------|
@@ -81,7 +81,7 @@ This system allows:
 
 ---
 
-### 🚗 Driver
+###  Driver
 
 | Method | Endpoint                          | Description                         |
 |--------|-----------------------------------|-------------------------------------|
@@ -94,7 +94,7 @@ This system allows:
 
 ---
 
-### 🚕 Ride
+###  Ride
 
 | Method | Endpoint                             | Description                              |
 |--------|--------------------------------------|------------------------------------------|
