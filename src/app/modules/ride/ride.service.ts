@@ -139,8 +139,13 @@ const acceptByDriver = async (rideId: string, driverId: string) => {
     throw new AppError(httpStatus.NOT_FOUND, 'Ride not found');
   }
 
-  ride.status = 'accepted';
-  ride.driver = new Types.ObjectId(driverId); // ✅ convert string to ObjectId
+  const driver =await Driver.findById(driverId)
+  if(driver?.isOnline === false){
+    throw new AppError(httpStatus.NOT_FOUND, 'Cant Assign  You Are Offline');
+  }
+
+    ride.status = 'accepted';
+  ride.driver = new Types.ObjectId(driverId); 
   ride.requestedAt = new Date();
 
   await ride.save();
