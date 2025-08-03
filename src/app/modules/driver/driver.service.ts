@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AppError } from '../../errorHalpers/AppError';
 import { Role } from '../user/user.constant';
 import { User } from '../user/user.model';
@@ -80,6 +81,19 @@ const getEarning = async (id: string) => {
 
   return driver;
 };
+const updateAvivility =async(id:string,onlineStatus:{online:boolean}) =>{
+  const updatedDriver = await Driver.findOneAndUpdate(
+    { user: id },
+    { isOnline: onlineStatus.online },
+    { new: true }
+  );
+
+  if (!updatedDriver) {
+    throw new AppError(404, "Driver not found");
+  }
+
+  return updatedDriver;
+}
 export const DriverService = {
   createDriver,
   approveDriver,
@@ -88,4 +102,5 @@ export const DriverService = {
   getDriverById,
   getAllDrivers,
   getEarning,
+  updateAvivility
 };

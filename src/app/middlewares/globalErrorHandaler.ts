@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { ZodError } from 'zod';
 import { AppError } from '../errorHalpers/AppError';
 import { handleCastError } from '../halpers/handleCaseError';
@@ -9,7 +9,8 @@ import { envConfig } from '../config';
 import { handleZodError } from '../halpers/handleZodError';
 import { TErrrorSourses } from '../interfaces/error';
 
-const globalErrorHandler = (err: any, req: Request, res: Response) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const globalErrorHandler = (err: any, req: Request, res: Response,next:NextFunction) => {
   if (envConfig.NODE_ENV === 'development') {
     console.log('🔥 Global Error Caught:', err);
   }

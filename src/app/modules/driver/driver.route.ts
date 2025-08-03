@@ -24,5 +24,8 @@ route.patch(
   auth([Role.ADMIN]),
   DriverControllers.suspendDriver,
 );
+
+route.patch('/availablity',auth([Role.DRIVER]),DriverControllers.updateAvailablity)
+
 route.get('/:id', DriverControllers.getDriverById);
 export const DriverRoutes = route;

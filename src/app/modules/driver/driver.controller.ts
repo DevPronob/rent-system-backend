@@ -78,6 +78,18 @@ const getEarinings = catchAsync(async (req, res) => {
   });
 });
 
+const updateAvailablity = catchAsync(async (req, res) => {
+    const userId =req.user._id
+    console.log(userId,req.body,"body")
+  const result = await DriverService.updateAvivility(userId,req.body);
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'Driver online status changed',
+    data: result,
+  });
+});
+
 export const DriverControllers = {
   createDriver,
   getDriverById,
@@ -86,4 +98,5 @@ export const DriverControllers = {
   approveDriver,
   suspendDriver,
   getEarinings,
+  updateAvailablity
 };

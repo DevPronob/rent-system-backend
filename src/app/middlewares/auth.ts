@@ -20,6 +20,9 @@ export const auth = (authRoles: string[]) => {
       if (!verifiedToken?.email) {
         throw new AppError(401, 'Token is invalid or missing email');
       }
+      if(verifiedToken.isBlocked){
+        throw new AppError(500, 'User Is Blocked');
+      }
       const isUserExists = await User.findOne({ email: verifiedToken.email });
       if (!isUserExists) {
         throw new AppError(404, 'Usr Not Exists');
