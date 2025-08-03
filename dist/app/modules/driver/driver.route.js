@@ -12,5 +12,6 @@ route.get('/earnings', (0, auth_1.auth)([user_constant_1.Role.DRIVER]), driver_c
 route.patch('/:id/status', (0, auth_1.auth)([user_constant_1.Role.DRIVER]), driver_controller_1.DriverControllers.updateDriverStatus);
 route.patch('/approve/:id', (0, auth_1.auth)([user_constant_1.Role.ADMIN]), driver_controller_1.DriverControllers.approveDriver);
 route.patch('/suspend/:id', (0, auth_1.auth)([user_constant_1.Role.ADMIN]), driver_controller_1.DriverControllers.suspendDriver);
+route.patch('/availablity', (0, auth_1.auth)([user_constant_1.Role.DRIVER]), driver_controller_1.DriverControllers.updateAvailablity);
 route.get('/:id', driver_controller_1.DriverControllers.getDriverById);
 exports.DriverRoutes = route;

@@ -29,6 +29,9 @@ const auth = (authRoles) => {
             if (!(verifiedToken === null || verifiedToken === void 0 ? void 0 : verifiedToken.email)) {
                 throw new AppError_1.AppError(401, 'Token is invalid or missing email');
             }
+            if (verifiedToken.isBlocked) {
+                throw new AppError_1.AppError(500, 'User Is Blocked');
+            }
             const isUserExists = yield user_model_1.User.findOne({ email: verifiedToken.email });
             if (!isUserExists) {
                 throw new AppError_1.AppError(404, 'Usr Not Exists');

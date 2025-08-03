@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DriverService = exports.rejectRequest = exports.createDriver = void 0;
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const AppError_1 = require("../../errorHalpers/AppError");
 const user_constant_1 = require("../user/user.constant");
 const user_model_1 = require("../user/user.model");
@@ -83,6 +84,13 @@ const getEarning = (id) => __awaiter(void 0, void 0, void 0, function* () {
         throw new AppError_1.AppError(404, 'Driver not found');
     return driver;
 });
+const updateAvivility = (id, onlineStatus) => __awaiter(void 0, void 0, void 0, function* () {
+    const updatedDriver = yield driver_model_1.Driver.findOneAndUpdate({ user: id }, { isOnline: onlineStatus.online }, { new: true });
+    if (!updatedDriver) {
+        throw new AppError_1.AppError(404, "Driver not found");
+    }
+    return updatedDriver;
+});
 exports.DriverService = {
     createDriver: exports.createDriver,
     approveDriver,
@@ -91,4 +99,5 @@ exports.DriverService = {
     getDriverById,
     getAllDrivers,
     getEarning,
+    updateAvivility
 };

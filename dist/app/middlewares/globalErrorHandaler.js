@@ -7,7 +7,8 @@ const handleDuplicateError_1 = require("../halpers/handleDuplicateError");
 const handleValidationError_1 = require("../halpers/handleValidationError");
 const config_1 = require("../config");
 const handleZodError_1 = require("../halpers/handleZodError");
-const globalErrorHandler = (err, req, res) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const globalErrorHandler = (err, req, res, next) => {
     if (config_1.envConfig.NODE_ENV === 'development') {
         console.log('🔥 Global Error Caught:', err);
     }
